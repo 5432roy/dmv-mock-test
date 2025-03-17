@@ -1,0 +1,301 @@
+/* Global Styles */
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f0f2f5, #cfd9df);
+  color: #333;
+}
+
+/* App Container */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styling */
+.App-header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #e0e0e0;
+  color: #333;
+  transition: background 0.3s;
+}
+
+.theme-toggle:hover {
+  background: #d5d5d5;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Question Container */
+.question-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+}
+
+/* Question Text */
+.question-text {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+/* Options Container */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Option Button */
+.option-button {
+  padding: 15px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #e0e0e0;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.option-button:hover {
+  background: #d5d5d5;
+  transform: scale(1.02);
+}
+
+.option-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Correct & Incorrect Highlighting */
+.option-button.correct {
+  background: #a5d6a7 !important;
+  color: #1b5e20;
+}
+
+.option-button.incorrect {
+  background: #ef9a9a !important;
+  color: #b71c1c;
+}
+
+/* Answer Section */
+.answer-section {
+  margin-top: 20px;
+}
+
+.feedback {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.correct-feedback {
+  color: #2e7d32;
+}
+
+.incorrect-feedback {
+  color: #c62828;
+}
+
+/* Next Button */
+.next-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #4a90e2;
+  color: white;
+  transition: background 0.3s;
+}
+
+.next-button:hover {
+  background: #407ec9;
+}
+
+/* Report Bug Section */
+.report-bug-section {
+  margin-top: 20px;
+}
+
+.report-bug-button {
+  padding: 8px 16px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #f5a623;
+  color: white;
+  transition: background 0.3s;
+}
+
+.report-bug-button:hover {
+  background: #e5941c;
+}
+
+/* Bug Report Form */
+.bug-report-form {
+  margin-top: 10px;
+  text-align: left;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.bug-report-form p {
+  margin-top: 0;
+}
+
+.bug-type-options {
+  margin-bottom: 10px;
+}
+
+.bug-type-options label {
+  margin-right: 15px;
+}
+
+.suggested-answer {
+  margin-bottom: 10px;
+}
+
+.suggested-answer label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.bug-report-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.submit-report-button,
+.cancel-report-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-report-button {
+  background: #4a90e2;
+  color: white;
+  transition: background 0.3s;
+}
+
+.submit-report-button:hover {
+  background: #407ec9;
+}
+
+.cancel-report-button {
+  background: #999;
+  color: white;
+  transition: background 0.3s;
+}
+
+.cancel-report-button:hover {
+  background: #888;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  font-size: 1.5em;
+  padding-top: 50px;
+}
+
+/* Dark Mode Overrides */
+.App.dark {
+  background: #2e2e2e;
+  color: #f0f0f0;
+}
+
+.App.dark .App-header {
+  background-color: #283593;  /* Dark blue */
+  color: #fff;
+}
+
+.App.dark .question-container {
+  background: #3e3e3e;
+}
+
+.App.dark .option-button {
+  background: #555;
+  color: #f0f0f0;
+}
+
+.App.dark .option-button:hover {
+  background: #666;
+}
+
+.App.dark .next-button {
+  background: #333;
+}
+
+/* Dark Mode: Bug Report Buttons */
+.App.dark .report-bug-button {
+  background: #b71c1c;  /* Dark red tone */
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.App.dark .report-bug-button:hover {
+  background: #d32f2f;  /* Brighter red on hover */
+}
+
+.App.dark .submit-report-button {
+  background: #388e3c;  /* Dark green tone */
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.App.dark .submit-report-button:hover {
+  background: #43a047;
+}
+
+.App.dark .cancel-report-button {
+  background: #f57c00;  /* Vibrant orange tone */
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.App.dark .cancel-report-button:hover {
+  background: #fb8c00;
+}
+
+/* Dark Mode: Bug Report Form Overrides */
+.App.dark .bug-report-form {
+  background: #444;
+  color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.App.dark .bug-report-form label {
+  color: #f0f0f0;
+}

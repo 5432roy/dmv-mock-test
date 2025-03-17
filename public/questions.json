@@ -1,0 +1,335 @@
+{
+    "questions": [
+      {
+        "id": 1,
+        "question": "If you see side-by-side red lights flashing at a railroad crossing, you must:",
+        "options": [
+          "Signal before going any further",
+          "Maintain your speed and cross the railroad",
+          "Slow down",
+          "Stop"
+        ],
+        "answer": "Stop"
+      },
+      {
+        "id": 2,
+        "question": "When driving in foggy weather, which headlights should you use?",
+        "options": [
+          "High beam headlights",
+          "Low beam headlights",
+          "Hazard lights",
+          "Parking lights"
+        ],
+        "answer": "Low beam headlights"
+      },
+      {
+        "id": 3,
+        "question": "According to Washington's child restraint law, when can a child move from a booster seat to using a seat belt alone?",
+        "options": [
+          "At 6 years of age",
+          "At 8 years of age or when 4’9” tall",
+          "At 10 years of age",
+          "At 12 years of age"
+        ],
+        "answer": "At 8 years of age or when 4’9” tall"
+      },
+      {
+        "id": 4,
+        "question": "What does an 'End school zone' sign indicate?",
+        "options": [
+          "That the speed limit is 20 mph",
+          "The beginning of a reduced speed zone",
+          "The increased possibility of encountering pedestrians",
+          "The end of a reduced speed zone"
+        ],
+        "answer": "The end of a reduced speed zone"
+      },
+      {
+        "id": 5,
+        "question": "On a freeway, when you see a 'Merging traffic' sign, you should:",
+        "options": [
+          "Honk at incoming traffic",
+          "Maintain your present speed",
+          "Speed up to avoid congesting traffic",
+          "Move to another lane, if safe, to let traffic enter"
+        ],
+        "answer": "Move to another lane, if safe, to let traffic enter"
+      },
+      {
+        "id": 6,
+        "question": "If two drivers arrive at an open intersection at the same time, who has the right-of-way?",
+        "options": [
+          "The driver on the right",
+          "The driver on the left",
+          "The driver who is larger",
+          "The driver who honks first"
+        ],
+        "answer": "The driver on the right"
+      },
+      {
+        "id": 7,
+        "question": "If your brakes fail while driving, what should you do first?",
+        "options": [
+          "Immediately pull off the road",
+          "Pump the brake pedal several times to build pressure",
+          "Accelerate to gain control",
+          "Turn off the engine immediately"
+        ],
+        "answer": "Pump the brake pedal several times to build pressure"
+      },
+      {
+        "id": 8,
+        "question": "What is the legal speed limit in Washington school zones under normal conditions?",
+        "options": [
+          "15 mph",
+          "20 mph",
+          "25 mph",
+          "30 mph"
+        ],
+        "answer": "20 mph"
+      },
+      {
+        "id": 9,
+        "question": "At a railroad crossing with a crossbuck sign and flashing red lights, you must:",
+        "options": [
+          "Stop and wait until it is safe",
+          "Slow down and cross quickly",
+          "Honk to alert the train",
+          "Continue driving at the same speed"
+        ],
+        "answer": "Stop and wait until it is safe"
+      },
+      {
+        "id": 10,
+        "question": "If you are impaired and refuse to take a breath test during a DUI stop, what is the minimum license suspension period for a first offense?",
+        "options": [
+          "30 days",
+          "90 days",
+          "One year",
+          "Two years"
+        ],
+        "answer": "90 days"
+      },
+      {
+        "id": 11,
+        "question": "Before changing lanes, a driver should:",
+        "options": [
+            "Check the rearview mirror only",
+            "Use turn signals and check both mirrors and blind spots",
+            "Immediately change lanes without checking",
+            "Honk to alert approaching vehicles"
+        ],
+        "answer": "Use turn signals and check both mirrors and blind spots"
+        },
+    {
+      "id": 12,
+      "question": "When driving in rainy conditions, you should:",
+      "options": [
+        "Increase your speed to avoid puddles",
+        "Maintain the same speed as on dry roads",
+        "Reduce your speed, as traction is decreased",
+        "Only turn on your high beams"
+      ],
+      "answer": "Reduce your speed, as traction is decreased"
+    },
+    {
+      "id": 13,
+      "question": "The Four-Second Following Distance Rule helps you:",
+      "options": [
+        "Follow too closely to improve fuel economy",
+        "Gauge a safe distance by counting the seconds until you pass a fixed object",
+        "Know when to overtake slower vehicles",
+        "Estimate your travel time on highways"
+      ],
+      "answer": "Gauge a safe distance by counting the seconds until you pass a fixed object"
+    },
+    {
+      "id": 14,
+      "question": "When backing up your vehicle safely, you should:",
+      "options": [
+        "Rely solely on your rearview mirror",
+        "Turn and look directly through the rear window",
+        "Only check your side mirrors",
+        "Back up quickly without stopping"
+      ],
+      "answer": "Turn and look directly through the rear window"
+    },
+    {
+      "id": 15,
+      "question": "If your vehicle begins to hydroplane on a wet road, you should:",
+      "options": [
+        "Brake hard immediately",
+        "Ease off the gas pedal and steer straight",
+        "Accelerate to regain traction",
+        "Turn sharply to correct the skid"
+      ],
+      "answer": "Ease off the gas pedal and steer straight"
+    },
+    {
+      "id": 16,
+      "question": "When approaching a railroad crossing with flashing red lights and a crossing gate, you must:",
+      "options": [
+        "Slow down and proceed with caution",
+        "Stop and wait until the lights stop flashing and the gate is raised",
+        "Honk to alert the train",
+        "Speed up to cross before the train arrives"
+      ],
+      "answer": "Stop and wait until the lights stop flashing and the gate is raised"
+    },
+    {
+      "id": 17,
+      "question": "Which of the following actions is NOT recommended to minimize distracted driving?",
+      "options": [
+        "Keeping your phone out of reach while driving",
+        "Avoiding eating or using personal devices while driving",
+        "Using hands-free devices extensively as a substitute for safe driving",
+        "Pulling over safely if you need to use an electronic device"
+      ],
+      "answer": "Using hands-free devices extensively as a substitute for safe driving"
+    },
+    {
+      "id": 18,
+      "question": "If you are being tailgated, the safest course of action is to:",
+      "options": [
+        "Speed up to put distance between you and the tailgater",
+        "Brake abruptly to warn the driver",
+        "Move to the right lane to allow the tailgater to pass",
+        "Honk continuously until the tailgater backs off"
+      ],
+      "answer": "Move to the right lane to allow the tailgater to pass"
+    },
+    {
+      "id": 19,
+      "question": "When following an emergency vehicle such as a fire truck, you must:",
+      "options": [
+        "Follow closely to keep pace with traffic",
+        "Maintain a distance of at least 500 feet",
+        "Speed up to stay in your lane",
+        "Move to the left to allow room for passing"
+      ],
+      "answer": "Maintain a distance of at least 500 feet"
+    },
+    {
+      "id": 20,
+      "question": "When making a right turn at night, to avoid being blinded by oncoming headlights you should:",
+      "options": [
+        "Turn on your high beams",
+        "Look away from the headlights toward the right side of the road",
+        "Flash your headlights at the oncoming vehicle",
+        "Slow down significantly"
+      ],
+      "answer": "Look away from the headlights toward the right side of the road"
+    },
+    {
+      "id": 21,
+      "question": "When merging onto a highway, the safest method is to:",
+      "options": [
+        "Stop at the end of the ramp and wait",
+        "Merge slowly after accelerating to match the speed of traffic",
+        "Enter the highway at a much lower speed than traffic",
+        "Honk to clear the lane before merging"
+      ],
+      "answer": "Merge slowly after accelerating to match the speed of traffic"
+    },
+    {
+      "id": 22,
+      "question": "A 'No Passing Zone' sign indicates that:",
+      "options": [
+        "Passing is allowed only on the right",
+        "Passing is prohibited in that area",
+        "You may pass after slowing down",
+        "Only light vehicles may pass"
+      ],
+      "answer": "Passing is prohibited in that area"
+    },
+    {
+      "id": 23,
+      "question": "A flashing yellow traffic light means that you should:",
+      "options": [
+        "Stop immediately",
+        "Proceed with caution",
+        "Treat it as a red light",
+        "Accelerate to clear the intersection"
+      ],
+      "answer": "Proceed with caution"
+    },
+    {
+      "id": 24,
+      "question": "When approaching a school bus with its red lights flashing, you must:",
+      "options": [
+        "Slow down and pass on the right",
+        "Stop regardless of your direction of travel",
+        "Proceed if no children are visible",
+        "Honk to alert the bus driver"
+      ],
+      "answer": "Stop regardless of your direction of travel"
+    },
+    {
+      "id": 25,
+      "question": "When parallel parking, you should aim to park within:",
+      "options": [
+        "24 inches of the curb",
+        "18 inches of the curb",
+        "12 inches of the curb",
+        "6 inches of the curb"
+      ],
+      "answer": "12 inches of the curb"
+    },
+    {
+      "id": 26,
+      "question": "The primary function of an ignition interlock device is to:",
+      "options": [
+        "Allow a driver to operate a vehicle without a breath test",
+        "Prevent the vehicle from starting if the driver’s BAC exceeds a preset limit",
+        "Record a driver’s alcohol consumption for later review",
+        "Be used as a substitute for a driver’s license renewal test"
+      ],
+      "answer": "Prevent the vehicle from starting if the driver’s BAC exceeds a preset limit"
+    },
+    {
+      "id": 27,
+      "question": "Under the 'Implied Consent Law', if you refuse a breath test during a DUI stop, you will face:",
+      "options": [
+        "A warning with no further consequences",
+        "License suspension for at least one year",
+        "A minor fine only",
+        "An immediate arrest without license suspension"
+      ],
+      "answer": "License suspension for at least one year"
+    },
+    {
+      "id": 28,
+      "question": "Which of the following is considered dangerously distracted driving?",
+      "options": [
+        "Using a voice-operated GPS system while driving",
+        "Eating or drinking while driving",
+        "Listening to the radio at moderate volume",
+        "Talking briefly with a passenger"
+      ],
+      "answer": "Eating or drinking while driving"
+    },
+    {
+      "id": 29,
+      "question": "If you are involved in a minor collision with a parked vehicle, you should:",
+      "options": [
+        "Leave the scene immediately to avoid traffic delays",
+        "Try to locate the owner and leave a note with your contact information",
+        "Call 911 and wait for the police to arrive",
+        "Argue with any nearby witnesses"
+      ],
+      "answer": "Try to locate the owner and leave a note with your contact information"
+    },
+    {
+      "id": 30,
+      "question": "If you see a vehicle on the road with an unsecured load, you should:",
+      "options": [
+        "Quickly pass the vehicle without changing lanes",
+        "Maintain a safe distance and report the situation to 911 if it is safe to do so",
+        "Honk to alert the driver",
+        "Ignore it as it is not your responsibility"
+      ],
+      "answer": "Maintain a safe distance and report the situation to 911 if it is safe to do so"
+    }
+  ]
+  }
+  
