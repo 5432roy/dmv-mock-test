@@ -1,4 +1,4 @@
-name = "my-react-app"
+name = "dmv-mock-test"
 type = "javascript"  # "webpack" works as well if your project uses a bundler
 
 # Cloudflare account details (set these if deploying to your own account)
