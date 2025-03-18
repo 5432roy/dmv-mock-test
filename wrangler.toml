@@ -1,0 +1,13 @@
+name = "my-react-app"
+type = "javascript"  # "webpack" works as well if your project uses a bundler
+
+# Cloudflare account details (set these if deploying to your own account)
+account_id = "f98222647de32d2685e2d090fd6e3412"
+workers_dev = true
+# Uncomment and set the following if you want to use a custom domain:
+# route = "example.com/*"
+# zone_id = "YOUR_ZONE_ID"
+
+[site]
+bucket = "./build"
+entry-point = "workers-site"
