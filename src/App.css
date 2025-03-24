@@ -299,3 +299,35 @@ body, html, #root {
 .App.dark .bug-report-form label {
   color: #f0f0f0;
 }
+
+/* mobile device adjustment*/
+@media (max-width: 600px) {
+  .App-header {
+    padding: 15px;
+    font-size: 1.2em;
+  }
+
+  .question-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .question-text {
+    font-size: 1.3em;
+  }
+
+  .option-button {
+    padding: 12px 16px;
+    font-size: 0.9em;
+  }
+
+  .options-container {
+    gap: 10px;
+  }
+
+  .theme-toggle {
+    padding: 6px 10px;
+    right: 10px;
+    top: 10px;
+  }
+}
