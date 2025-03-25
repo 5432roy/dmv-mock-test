@@ -19,13 +19,7 @@ function App() {
 
   // Pick a random question by generating a random id between 1 and 30.
   const loadRandomQuestion = (loadedQuestions) => {
-    const randomId = Math.floor(Math.random() * 30) + 1;
-    const foundQuestion = loadedQuestions.find(q => q.id === randomId);
-
-    if (foundQuestion) {
-      setCurrentQuestion(foundQuestion);
-    } else if (loadedQuestions.length > 0) {
-      // Fallback: pick any random question from the available list.
+    if (loadedQuestions.length > 0) {
       const randomIndex = Math.floor(Math.random() * loadedQuestions.length);
       setCurrentQuestion(loadedQuestions[randomIndex]);
     }
