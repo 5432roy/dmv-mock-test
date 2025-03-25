@@ -230,6 +230,17 @@ body, html, #root {
   padding-top: 50px;
 }
 
+/* ---------- Footer ---------- */
+footer {
+  background: #202123;
+  color: #e4e4e4;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+
+
 /* Dark Mode Overrides */
 .App.dark {
   background: #2e2e2e;
