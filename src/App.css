@@ -46,7 +46,7 @@ body, html, #root {
 .main-content {
   flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -59,6 +59,12 @@ body, html, #root {
   max-width: 600px;
   width: 90%;
   text-align: center;
+}
+
+/* Scoreboard */
+.scoreboard {
+  margin-bottom: 15px;
+  font-size: 1.1em;
 }
 
 /* Question Text */
@@ -223,6 +229,46 @@ body, html, #root {
   background: #888;
 }
 
+/* Wrong Questions Section */
+.wrong-questions-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 90%;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.wrong-questions-section h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #c62828;
+}
+
+/* Enhanced styling for each wrong question item */
+.wrong-question-item {
+  background: #f8f8f8;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid #c62828;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.wrong-question-item:last-child {
+  margin-bottom: 0;
+}
+
+.question-thumbnail {
+  width: 80px;
+  height: auto;
+  margin-right: 15px;
+  border-radius: 3px;
+}
+
 /* Loading State */
 .loading {
   text-align: center;
@@ -238,8 +284,6 @@ footer {
   padding: 20px;
   font-size: 0.9rem;
 }
-
-
 
 /* Dark Mode Overrides */
 .App.dark {
@@ -311,7 +355,22 @@ footer {
   color: #f0f0f0;
 }
 
-/* mobile device adjustment*/
+.App.dark .wrong-questions-section {
+  background: #3e3e3e;
+  color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.App.dark .wrong-questions-section h2 {
+  color: #ef5350;
+}
+
+.App.dark .wrong-question-item {
+  background: #4a4a4a;
+  border-left: 4px solid #ef5350;
+}
+
+/* Mobile Device Adjustments */
 @media (max-width: 600px) {
   .App-header {
     padding: 15px;

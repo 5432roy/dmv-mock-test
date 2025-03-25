@@ -12,6 +12,11 @@ function App() {
   const [suggestedAnswer, setSuggestedAnswer] = useState('');
   const [theme, setTheme] = useState('light');
 
+  // New states for tracking performance
+  const [correctCount, setCorrectCount] = useState(0);
+  const [wrongCount, setWrongCount] = useState(0);
+  const [wrongQuestions, setWrongQuestions] = useState([]);
+
   // Pick a random question by generating a random id between 1 and 30.
   const loadRandomQuestion = (loadedQuestions) => {
     const randomId = Math.floor(Math.random() * 30) + 1;
@@ -28,9 +33,9 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      // Fetch questions from Supabase table "questions"
+      // Fetch questions from Supabase table "Questions"
       const { data: questionsData, error: questionsError } = await supabase
-        .from('Questions')
+        .from("Questions")
         .select('id, Prompt, Option1, Option2, Option3, Option4, GraphLink, Answer');
       if (questionsError) {
         console.error('Error fetching questions:', questionsError);
@@ -54,6 +59,17 @@ function App() {
   const handleAnswer = (option) => {
     setSelectedAnswer(option);
     setShowAnswer(true);
+
+    // Check answer and update counts.
+    if (option === currentQuestion.answer) {
+      setCorrectCount(prev => prev + 1);
+    } else {
+      setWrongCount(prev => prev + 1);
+      // Add to wrongQuestions if not already added
+      if (!wrongQuestions.find(q => q.id === currentQuestion.id)) {
+        setWrongQuestions(prev => [...prev, currentQuestion]);
+      }
+    }
   };
 
   const handleNext = () => {
@@ -96,6 +112,11 @@ function App() {
       </header>
       <main className="main-content">
         <div className="question-container">
+          {/* Scoreboard */}
+          <div className="scoreboard">
+            <p>Correct: {correctCount} | Incorrect: {wrongCount}</p>
+          </div>
+
           {/* If GraphLink exists, display the image; otherwise, display the text prompt */}
           {currentQuestion.graphLink ? (
             <img
@@ -214,6 +235,30 @@ function App() {
             )}
           </div>
         </div>
+
+        {/* Section to review questions answered incorrectly */}
+        {wrongQuestions.length > 0 && (
+          <div className="wrong-questions-section">
+            <h2>Review Wrong Answers</h2>
+            <ul>
+              {wrongQuestions.map((q, index) => (
+                <li key={index} className="wrong-question-item">
+                  {q.graphLink ? (
+                    <img
+                      src={q.graphLink}
+                      alt="Question Thumbnail"
+                      className="question-thumbnail"
+                    />
+                  ) : (
+                    <span>{q.question}</span>
+                  )}
+                  <br />
+                  <span className="correct-answer">{q.answer}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </main>
     </div>
   );
