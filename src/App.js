@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { supabase } from './supabaseClient';
 
 function App() {
   const [questions, setQuestions] = useState([]);
-  const [reportData, setReportData] = useState([]); // Holds bug reports for each question
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -27,22 +27,28 @@ function App() {
   };
 
   useEffect(() => {
-    // Fetch the questions from public/questions.json.
-    fetch('/questions.json')
-      .then(res => res.json())
-      .then(data => {
-        setQuestions(data.questions);
-        loadRandomQuestion(data.questions);
-      })
-      .catch(err => console.error('Error fetching questions:', err));
-
-    // Fetch the report data from public/report.json.
-    fetch('/report.json')
-      .then(res => res.json())
-      .then(data => {
-        setReportData(data.reports || []);
-      })
-      .catch(err => console.error('Error fetching report data:', err));
+    async function fetchData() {
+      // Fetch questions from Supabase table "questions"
+      const { data: questionsData, error: questionsError } = await supabase
+        .from('Questions')
+        .select('id, Prompt, Option1, Option2, Option3, Option4, GraphLink, Answer');
+      if (questionsError) {
+        console.error('Error fetching questions:', questionsError);
+      } else {
+        // Transform the data to match our UI expectations.
+        const transformed = questionsData.map(q => ({
+          id: q.id,
+          question: q.Prompt,
+          options: [q.Option1, q.Option2, q.Option3, q.Option4],
+          answer: q.Answer,
+          graphLink: q.GraphLink,
+        }));
+        setQuestions(transformed);
+        loadRandomQuestion(transformed);
+      }
+      // Skip fetching bug reports for now.
+    }
+    fetchData();
   }, []);
 
   const handleAnswer = (option) => {
@@ -63,42 +69,17 @@ function App() {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
+  // For now, simply log the bug report details and reset the UI.
   const handleBugReportSubmit = (e) => {
     e.preventDefault();
-    const questionId = currentQuestion.id;
-    // Find existing report entry for the current question.
-    let reportEntry = reportData.find(report => report.questionId === questionId);
-    if (!reportEntry) {
-      reportEntry = {
-        questionId,
-        wrongAnswer: { count: 0, suggestions: {} },
-        vagueImage: 0,
-        vagueDescription: 0
-      };
-    }
-
+    console.log("Bug Report Submitted for Question ID:", currentQuestion.id);
+    console.log("Report Type:", reportType);
     if (reportType === 'wrongAnswer') {
-      reportEntry.wrongAnswer.count += 1;
-      const suggestion = suggestedAnswer;
-      reportEntry.wrongAnswer.suggestions[suggestion] =
-        (reportEntry.wrongAnswer.suggestions[suggestion] || 0) + 1;
-    } else if (reportType === 'vagueImage') {
-      reportEntry.vagueImage += 1;
-    } else if (reportType === 'vagueDescription') {
-      reportEntry.vagueDescription += 1;
+      console.log("Suggested Correct Answer:", suggestedAnswer);
     }
-
-    // Update the report data in state.
-    const updatedReportData = reportData.filter(report => report.questionId !== questionId);
-    updatedReportData.push(reportEntry);
-    setReportData(updatedReportData);
-
-    // Reset the bug report UI.
     setReportType('');
     setSuggestedAnswer('');
     setReporting(false);
-
-    // In a real application, you would persist these changes to a backend or update report.json.
   };
 
   if (!currentQuestion) {
@@ -115,7 +96,16 @@ function App() {
       </header>
       <main className="main-content">
         <div className="question-container">
-          <p className="question-text">{currentQuestion.question}</p>
+          {/* If GraphLink exists, display the image; otherwise, display the text prompt */}
+          {currentQuestion.graphLink ? (
+            <img
+              src={currentQuestion.graphLink}
+              alt="Question Graphic"
+              className="question-image"
+            />
+          ) : (
+            <p className="question-text">{currentQuestion.question}</p>
+          )}
           <div className="options-container">
             {currentQuestion.options.map((option, index) => (
               <button
@@ -149,7 +139,7 @@ function App() {
             </div>
           )}
 
-          {/* Bug Report Section */}
+          {/* Bug Report Section (Front End Only) */}
           <div className="report-bug-section">
             {!reporting && (
               <button className="report-bug-button" onClick={() => setReporting(true)}>
