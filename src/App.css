@@ -12,6 +12,7 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: background-color 1s ease, color 1s ease;
 }
 
 /* Header Styling */
@@ -289,6 +290,7 @@ footer {
 .App.dark {
   background: #2e2e2e;
   color: #f0f0f0;
+  transition: background 1s;
 }
 
 .App.dark .App-header {
@@ -298,6 +300,7 @@ footer {
 
 .App.dark .question-container {
   background: #3e3e3e;
+  transition: background 0.3s;
 }
 
 .App.dark .option-button {
@@ -344,7 +347,6 @@ footer {
   background: #fb8c00;
 }
 
-/* Dark Mode: Bug Report Form Overrides */
 .App.dark .bug-report-form {
   background: #444;
   color: #f0f0f0;
@@ -359,6 +361,7 @@ footer {
   background: #3e3e3e;
   color: #f0f0f0;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background 0.3s;
 }
 
 .App.dark .wrong-questions-section h2 {
