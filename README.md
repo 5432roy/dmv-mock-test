@@ -1,29 +1,18 @@
 # DMVMockTest
 
-**Version:** 0.1  
-**Date:** 2025-03-17
-
 ## Table of Contents
 - [Introduction](#introduction)
 - [Goals and Objectives](#goals-and-objectives)
 - [System Architecture](#system-architecture)
-- [Technology Stack](#technology-stack)
-- [Feature Roadmap](#feature-roadmap)
-  - [Early Stage](#early-stage)
-  - [Middle Stage](#middle-stage)
 - [UI/UX Design Considerations](#uiux-design-considerations)
-- [Development Process and Tools](#development-process-and-tools)
-- [Monetization Strategy](#monetization-strategy)
-- [Security, Performance, and Scalability](#security-performance-and-scalability)
-- [Testing and Maintenance](#testing-and-maintenance)
+- [Future Updates](#future-updates)
 - [Timeline and Milestones](#timeline-and-milestones)
-- [Conclusion](#conclusion)
 
 ---
 
 ## Introduction
 
-**DMVMockTest** is a web application designed to help users prepare for their driving permit tests through interactive, mock test questions based on the DMV manual. The initial focus is on Washington State (WA), with plans to expand to other states in the future. The application will feature a clean and engaging UI with integrated ad monetization, and later, optional user accounts for tracking progress.
+**DMVMockTest** is a web application designed to help users prepare for their driving permit tests through interactive, mock test questions based on the DMV manual. The initial focus is on Washington State (WA), with plans to expand to other states in the future. The application will feature a clean and engaging UI with integrated ad monetization and optional user accounts for tracking progress.
 
 ---
 
@@ -33,7 +22,6 @@
 - **Content Focus:** Initially provide content from WA’s DMV manual; expand to include multiple states later.
 - **Monetization:** Generate revenue through integrated ads without compromising the user experience.
 - **Scalability:** Build a modular, scalable codebase that supports additional features (user accounts, history tracking, multi-state support).
-- **Deployment:** Leverage Cloudflare’s fast, secure, and scalable hosting solutions.
 
 ---
 
@@ -41,56 +29,14 @@
 
 - **Frontend:**  
   - A single-page application (SPA) built with React for a dynamic user experience.
-- **Backend (Future Enhancements):**  
-  - Firebase for user authentication and database storage (quiz history, question bank).
-  - Potential use of Cloudflare Workers for lightweight serverless functions.
-- **Hosting:**  
-  - Cloudflare Pages for static site hosting.
-  - GitHub for version control and CI/CD.
-
----
-
-## Technology Stack
-
-- **Frontend:**  
-  - React
-  - CSS (or a framework like Tailwind CSS or Bootstrap)
-- **Backend & Database (Future):**  
-  - Firebase Authentication
-  - Firebase Firestore/Realtime Database
+- **Backend :**  
+  - PostgreSQL for user authentication and database storage (quiz history, question bank, bugs report).
 - **Hosting and Deployment:**  
-  - Cloudflare Pages (with Cloudflare Workers if needed)
-- **Version Control:**  
-  - GitHub (Repository: DMVMockTest)
-- **Ad Integration:**  
-  - Google AdSense or similar ad networks
-
----
-
-## Feature Roadmap
-
-### Early Stage
-
-1. **Mock Test Flow:**  
-   - Display one question at a time.
-   - Allow user input and, upon submission, show the correct answer.
-   - Transition to the next question automatically after review.
-
-2. **Reporting System:**  
-   - Provide an option for users to report issues (unclear descriptions, incorrect answers, or problematic graphics).
-
-3. **Content:**  
-   - Use only WA’s DMV manual for the initial question bank.
-
-### Middle Stage
-
-1. **User Authentication & History:**  
-   - Introduce optional user logins.
-   - Track and display the history of answered questions with feedback on incorrect responses.
-
-2. **Multi-State Support:**  
-   - Expand the question bank to include DMV manuals from additional states.
-   - Allow users to select the state for which they want to take the test.
+  - Vercel for dynamic site hosting.
+  - SupaBase for database hosting
+  - GitHub for version control and CI/CD.
+- **Ad Integration:**
+  - Google AdSense
 
 ---
 
@@ -103,73 +49,41 @@
 
 ---
 
-## Development Process and Tools
-
-- **Repository Management:**  
-  - Use GitHub for version control.
-  - Maintain branches for feature development and use pull requests for code reviews.
-- **Local Development:**  
-  - Set up a local React development environment.
-  - Use ESLint and Prettier for code quality.
-- **Continuous Deployment:**  
-  - Configure Cloudflare Pages to auto-deploy changes pushed to the main branch.
-- **Collaboration:**  
-  - Utilize GitHub Issues and Projects to track tasks, bugs, and feature requests.
-
----
-
-## Monetization Strategy
-
-- **Ad Integration:**  
-  - Integrate with an ads API (e.g., Google AdSense).
-  - Place ads in non-intrusive locations to ensure the primary focus remains on the test experience.
-
----
-
-## Security, Performance, and Scalability
+## Future Updates
 
 - **Security:**  
-  - Utilize Cloudflare’s built-in security features (SSL, CDN, DDoS protection).
-  - Secure user data with Firebase (once implemented).
-- **Performance:**  
-  - Optimize the React app for fast load times.
-  - Leverage Cloudflare Pages for global, fast content delivery.
-- **Scalability:**  
-  - Design a modular codebase to support future features and user growth.
-  - Prepare for increased database demands with scalable solutions like Firebase.
-
----
-
-## Testing and Maintenance
-
-- **Testing:**  
-  - Implement unit and integration tests for key components.
-  - Conduct user testing to gather feedback and iterate on the UI/UX.
-- **Maintenance:**  
-  - Monitor and resolve user-reported issues promptly.
-  - Regularly update dependencies and ensure high code quality.
+  - Utilize Cloudflare for DDoS protection.
+- **Features**
+  - User login to keep track of question history
+  - Navigate to the manual to learn instead of only answering questions
+  - Traffic Icons related questions   
 
 ---
 
 ## Timeline and Milestones
 
-1. **Initial Setup (Early Stage):**  
+1. **Early Stage - Done:**  
    - Create the GitHub repository and initialize the React project.
-   - Develop the basic test flow (single question, answer feedback).
-   - Deploy on Cloudflare Pages.
+   - Implement the basic test flow as a static page (single question, answer feedback).
+   - Deploy to the web.
    - *Estimated Completion:* 2-3 weeks.
+   - *Completed in:* 4 days.
 
-2. **Early Stage Enhancements:**  
-   - Implement the question reporting feature.
+2. **Middle Stage - Done:**
+   - Set up the database.
+   - Transition to a dynamic page to interact with the database.
    - Refine UI design and basic ad integration.
-   - *Estimated Completion:* Additional 2-3 weeks.
+   - Add bug report to get feedback from users into database
+   - *Estimated Completion:* Additional 1-2 weeks.
+   - *Completed in:* 8 days.
 
-3. **Middle Stage Development:**  
-   - Add user authentication and history tracking via Firebase.
+4. **Final Stage**
+   - Get permission from Google Adsense and start generating revenue.
+   - Add user authentication and history tracking.
    - Expand the question bank to support multiple states.
-   - *Estimated Completion:* 4-6 weeks after early stage.
+   - *Estimated Completion:* 4-6 weeks.
 
-4. **Ongoing Maintenance:**  
+6. **Ongoing Maintenance:**  
    - Continuous testing, UI improvements, and feature updates based on user feedback.
 
 ---
