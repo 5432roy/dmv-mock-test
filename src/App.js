@@ -17,7 +17,7 @@ function App() {
   const [wrongCount, setWrongCount] = useState(0);
   const [wrongQuestions, setWrongQuestions] = useState([]);
 
-  // Pick a random question by generating a random id between 1 and 30.
+
   const loadRandomQuestion = (loadedQuestions) => {
     if (loadedQuestions.length > 0) {
       const randomIndex = Math.floor(Math.random() * loadedQuestions.length);
@@ -45,7 +45,6 @@ function App() {
         setQuestions(transformed);
         loadRandomQuestion(transformed);
       }
-      // Skip fetching bug reports for now.
     }
     fetchData();
   }, []);
@@ -79,14 +78,34 @@ function App() {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  // For now, simply log the bug report details and reset the UI.
-  const handleBugReportSubmit = (e) => {
+  const handleBugReportSubmit = async (e) => {
     e.preventDefault();
-    console.log("Bug Report Submitted for Question ID:", currentQuestion.id);
-    console.log("Report Type:", reportType);
-    if (reportType === 'wrongAnswer') {
-      console.log("Suggested Correct Answer:", suggestedAnswer);
+
+    try {
+      // Build the row to insert
+      const rowToInsert = {
+        problem_id: currentQuestion.id,
+        report_type: reportType,
+        // Only fill suggested_answer if the user selected 'wrongAnswer'
+        suggested_answer: reportType === 'wrong_options' ? suggestedAnswer : null,
+      };
+
+      // Insert into the bugs_report table
+      const { error } = await supabase
+        .from('bugs_report')
+        .insert([rowToInsert]);
+
+      if (error) {
+        console.error('Error inserting bug report:', error);
+        alert('Failed to submit bug report. Please try again later.');
+      } else {
+        alert('Thank you! Your bug report has been submitted.');
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      alert('An unexpected error occurred. Please try again.');
     }
+
     setReportType('');
     setSuggestedAnswer('');
     setReporting(false);
@@ -169,8 +188,8 @@ function App() {
                     <input
                       type="radio"
                       name="bugType"
-                      value="wrongAnswer"
-                      checked={reportType === 'wrongAnswer'}
+                      value="wrong_options"
+                      checked={reportType === 'wrong_options'}
                       onChange={(e) => setReportType(e.target.value)}
                     />
                     Wrong Answer
@@ -179,8 +198,8 @@ function App() {
                     <input
                       type="radio"
                       name="bugType"
-                      value="vagueImage"
-                      checked={reportType === 'vagueImage'}
+                      value="vauge_image"
+                      checked={reportType === 'vauge_image'}
                       onChange={(e) => setReportType(e.target.value)}
                     />
                     Vague Image
@@ -189,14 +208,14 @@ function App() {
                     <input
                       type="radio"
                       name="bugType"
-                      value="vagueDescription"
-                      checked={reportType === 'vagueDescription'}
+                      value="vague_description"
+                      checked={reportType === 'vague_description'}
                       onChange={(e) => setReportType(e.target.value)}
                     />
                     Vague Description
                   </label>
                 </div>
-                {reportType === 'wrongAnswer' && (
+                {reportType === 'wrong_options' && (
                   <div className="suggested-answer">
                     <p>Select the answer you believe is correct:</p>
                     {currentQuestion.options.map((option, index) => (
