@@ -3,16 +3,17 @@ import './App.css';
 import { supabase } from './supabaseClient';
 
 function App() {
+  const [theme, setTheme] = useState('light');
+  
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+
   const [reporting, setReporting] = useState(false);
   const [reportType, setReportType] = useState('');
   const [suggestedAnswer, setSuggestedAnswer] = useState('');
-  const [theme, setTheme] = useState('light');
 
-  // New states for tracking performance
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
   const [wrongQuestions, setWrongQuestions] = useState([]);
@@ -34,7 +35,6 @@ function App() {
       if (questionsError) {
         console.error('Error fetching questions:', questionsError);
       } else {
-        // Transform the data to match our UI expectations.
         const transformed = questionsData.map(q => ({
           id: q.id,
           question: q.Prompt,
@@ -53,12 +53,10 @@ function App() {
     setSelectedAnswer(option);
     setShowAnswer(true);
 
-    // Check answer and update counts.
     if (option === currentQuestion.answer) {
       setCorrectCount(prev => prev + 1);
     } else {
       setWrongCount(prev => prev + 1);
-      // Add to wrongQuestions if not already added
       if (!wrongQuestions.find(q => q.id === currentQuestion.id)) {
         setWrongQuestions(prev => [...prev, currentQuestion]);
       }
@@ -82,15 +80,12 @@ function App() {
     e.preventDefault();
 
     try {
-      // Build the row to insert
       const rowToInsert = {
         problem_id: currentQuestion.id,
         report_type: reportType,
-        // Only fill suggested_answer if the user selected 'wrongAnswer'
         suggested_answer: reportType === 'wrong_options' ? suggestedAnswer : null,
       };
 
-      // Insert into the bugs_report table
       const { error } = await supabase
         .from('bugs_report')
         .insert([rowToInsert]);
@@ -173,7 +168,7 @@ function App() {
             </div>
           )}
 
-          {/* Bug Report Section (Front End Only) */}
+          {/* Bug Report Section */}
           <div className="report-bug-section">
             {!reporting && (
               <button className="report-bug-button" onClick={() => setReporting(true)}>
