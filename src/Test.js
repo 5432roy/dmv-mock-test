@@ -172,8 +172,7 @@ function Test({
                 ) : (
                   <span>{q.question}</span>
                 )}
-                <br />
-                <span className="correct-answer">Correct Answer: {q.answer}</span>
+                <span className="correct-answer"> {q.answer}</span>
               </li>
             ))}
           </ul>
