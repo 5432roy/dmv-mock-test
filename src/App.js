@@ -22,9 +22,16 @@ function App() {
           <button onClick={() => setActiveView('test')}>Test</button>
           <button onClick={() => setActiveView('learn')}>Learn</button>
         </nav>
-        <button className="theme-toggle" onClick={toggleTheme}>
-          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
-        </button>
+        <img
+          className="theme-toggle-img"
+          src={
+            theme === 'light'
+              ? 'LandSwitchLight.png'
+              : 'LandSwitchDark.png'
+          }
+          alt="Toggle theme"
+          onClick={toggleTheme}
+        />
       </header>
       <main className="main-content">
         {activeView === 'intro' && <Home />}
