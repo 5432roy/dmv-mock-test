@@ -5,24 +5,22 @@ body, html, #root {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #b1bbca, #297c4c); /* avoid flash from light to dark */
   color: #333;
 }
 
 .App {
   display: flex;
-  background: linear-gradient(135deg, #f0f2f5, #cfd9df);
+  background: linear-gradient(135deg, #b1bbca, #297c4c);
   flex-direction: column;
   min-height: 100vh;
-  transition: background-color 1s ease, color 1s ease;
 }
 
 /* Header and Navigation */
 .App-header {
-  background-color: #4a90e2;
-  color: white;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
   position: relative;
 }
 
@@ -74,11 +72,11 @@ body, html, #root {
 .App.dark {
   background: #2e2e2e;
   color: #f0f0f0;
-  transition: background 1s;
+  transition: background-color 1s ease, color 2s ease;
+  transition-delay: color 0.5s ease;
 }
 
 .App.dark .App-header {
-  background-color: #283593;
   color: #fff;
 }
 

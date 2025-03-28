@@ -78,7 +78,7 @@ function App() {
   return (
     <div className={`App ${theme}`}>
       <header className="App-header">
-        <h1>DMV Mock Test</h1>
+        <h1>Driving Permit Prep</h1>
         <nav className="nav-bar">
           <button onClick={() => setActiveView('intro')}>Home</button>
           <button onClick={() => setActiveView('test')}>Test</button>
