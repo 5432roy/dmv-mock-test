@@ -1,96 +1,38 @@
 // src/Test.js
-import React, { useState, useEffect } from 'react';
-import { supabase } from './supabaseClient';
+import React from 'react';
 import './Test.css';
+import { submitBugReport } from './dataService';
 
-function Test() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [questions, setQuestions] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState(null);
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-
-  const [reporting, setReporting] = useState(false);
-  const [reportType, setReportType] = useState('');
-  const [suggestedAnswer, setSuggestedAnswer] = useState('');
-
-  const [correctCount, setCorrectCount] = useState(0);
-  const [wrongCount, setWrongCount] = useState(0);
-  const [wrongQuestions, setWrongQuestions] = useState([]);
-
-  // Select a random question from the loaded list
-  const loadRandomQuestion = (loadedQuestions) => {
-    if (loadedQuestions.length > 0) {
-      const randomIndex = Math.floor(Math.random() * loadedQuestions.length);
-      setCurrentQuestion(loadedQuestions[randomIndex]);
-    }
-  };
-
-  useEffect(() => {
-    async function fetchQuestions() {
-      const { data: questionsData, error } = await supabase
-        .from("Questions")
-        .select('id, Prompt, Option1, Option2, Option3, Option4, GraphLink, Answer');
-      if (error) {
-        console.error('Error fetching questions:', error);
-      } else {
-        const transformed = questionsData.map(q => ({
-          id: q.id,
-          question: q.Prompt,
-          options: [q.Option1, q.Option2, q.Option3, q.Option4],
-          answer: q.Answer,
-          graphLink: q.GraphLink,
-        }));
-        setQuestions(transformed);
-        loadRandomQuestion(transformed);
-      }
-      setIsLoading(false);
-    }
-    fetchQuestions();
-  }, []);
-
-  const handleAnswer = (option) => {
-    setSelectedAnswer(option);
-    setShowAnswer(true);
-    if (option === currentQuestion.answer) {
-      setCorrectCount(prev => prev + 1);
-    } else {
-      setWrongCount(prev => prev + 1);
-      if (!wrongQuestions.find(q => q.id === currentQuestion.id)) {
-        setWrongQuestions(prev => [...prev, currentQuestion]);
-      }
-    }
-  };
-
-  const handleNext = () => {
-    setShowAnswer(false);
-    setSelectedAnswer(null);
-    setReporting(false);
-    setReportType('');
-    setSuggestedAnswer('');
-    loadRandomQuestion(questions);
-  };
-
-  const handleBugReportSubmit = async (e) => {
+function Test({
+  isLoading,
+  currentQuestion,
+  showAnswer,
+  selectedAnswer,
+  correctCount,
+  wrongCount,
+  wrongQuestions,
+  reporting,
+  reportType,
+  suggestedAnswer,
+  handleAnswer,
+  handleNext,
+  setReporting,
+  setReportType,
+  setSuggestedAnswer,
+}) {
+  const onBugReportSubmit = async (e) => {
     e.preventDefault();
+    const report = {
+      problem_id: currentQuestion.id,
+      report_type: reportType,
+      suggested_answer: reportType === 'wrong_options' ? suggestedAnswer : null,
+    };
     try {
-      const rowToInsert = {
-        problem_id: currentQuestion.id,
-        report_type: reportType,
-        suggested_answer: reportType === 'wrong_options' ? suggestedAnswer : null,
-      };
-      const { error } = await supabase
-        .from('bugs_report')
-        .insert([rowToInsert]);
-      if (error) {
-        console.error('Error inserting bug report:', error);
-        alert('Failed to submit bug report. Please try again later.');
-      } else {
-        alert('Thank you! Your bug report has been submitted.');
-      }
-    } catch (err) {
-      console.error('Unexpected error:', err);
-      alert('An unexpected error occurred. Please try again.');
+      await submitBugReport(report);
+      alert("Thank you! Your bug report has been submitted.");
+    } catch (error) {
+      console.error("Error submitting bug report:", error);
+      alert("Failed to submit bug report. Please try again later.");
     }
     setReportType('');
     setSuggestedAnswer('');
@@ -105,7 +47,7 @@ function Test() {
   }
 
   return (
-    <div className="test-section">
+    <div className="question-container">
       <div className="scoreboard">
         <p>Correct: {correctCount} | Incorrect: {wrongCount}</p>
       </div>
@@ -136,7 +78,6 @@ function Test() {
           </button>
         ))}
       </div>
-
       {showAnswer && (
         <div className="answer-section">
           <button className="next-button" onClick={handleNext}>
@@ -150,7 +91,7 @@ function Test() {
             Report Bug
           </button>
         ) : (
-          <form className="bug-report-form" onSubmit={handleBugReportSubmit}>
+          <form className="bug-report-form" onSubmit={onBugReportSubmit}>
             <p>Report a bug:</p>
             <div className="bug-type-options">
               <label>
@@ -216,7 +157,6 @@ function Test() {
           </form>
         )}
       </div>
-      
       {wrongQuestions.length > 0 && (
         <div className="wrong-questions-section">
           <h2>Review Wrong Answers</h2>
