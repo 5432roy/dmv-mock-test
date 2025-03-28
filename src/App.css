@@ -5,12 +5,12 @@ body, html, #root {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #f0f2f5, #cfd9df);
   color: #333;
 }
 
 .App {
   display: flex;
+  background: linear-gradient(135deg, #f0f2f5, #cfd9df);
   flex-direction: column;
   min-height: 100vh;
   transition: background-color 1s ease, color 1s ease;
@@ -89,4 +89,13 @@ body, html, #root {
 
 .App.dark .nav-bar button:hover {
   background-color: #1a237e;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: #202123;
+  color: #e4e4e4;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
 }
